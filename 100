@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDIUM — Premium Men's Fashion Store</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* To'q jigarrang fon va kreativ chiziqli dizayn */
+        body {
+            background-color: #160f0c;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(212, 163, 115, 0.09) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(212, 163, 115, 0.07) 0%, transparent 45%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.015) 25%, transparent 25%),
+                linear-gradient(225deg, rgba(255, 255, 255, 0.015) 25%, transparent 25%);
+            background-size: 100% 100%, 100% 100%, 50px 50px, 50px 50px;
+            color: #ffffff;
+            line-height: 1.5;
+        }
+
+        /* 1. YUQORI QISM: LOGO VA XUSH KELIBSIZ */
+        header {
+            text-align: center;
+            padding: 30px 15px;
+            background: linear-gradient(180deg, #261b16 0%, #160f0c 100%);
+            border-bottom: 2px solid #3d2c24;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .admin-login-icon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #2b1f19;
+            color: #d4a373;
+            border: 1px solid #4a352b;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #d4a373;
+            margin-bottom: 12px;
+            background-color: #3d2c24;
+            box-shadow: 0 0 15px rgba(212, 163, 115, 0.3);
+        }
+
+        .brand-name { MEDIUM MENS WEAR
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .welcome-text { MEDIUM ERKAKLAR DOKONIGA HUSH KELIBSIZ 
+                Добро пожаловать в магазин мужской одежды MEDIUM
+                                 Welcome to MEDIUM Men's Clothing Store
+            font-size: 15px;
+            color: #e6ccb2;
+            max-width: 350px;
+            margin: 0 auto;
+            font-weight: 500;
+        }
+
+        /* 2. KATALOG QISMI */
+        .container {
+            padding: 20px 14px;
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #e6ccb2;
+            padding-left: 10px;
+            border-left: 4px solid #d4a373;
+        }
+
+        .add-product-btn {
+            background-color: #d4a373;
+            color: #160f0c;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            display: none; /* Faqat admin kirganda chiqadi */
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .card {
+            background: rgba(38, 27, 22, 0.9);
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid #4a352b;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .card:active {
+            transform: scale(0.97);
+            border-color: #d4a373;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #33251e;
+            display: block;
+        }
+
+        .card-info {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-size: 14px;
+            font-weight: 700;
+            color: #160f0c;
+            background: linear-gradient(135deg, #f3e5d8 0%, #d4a373 100%);
+            padding: 6px 10px;
+            border-radius: 8px;
+            align-self: flex-start;
+        }
+
+        /* 3. ENG PASTKI QISM: KONTAKTLAR, LOKATSIYALAR VA INSTAGRAM */
+        footer {+998944487181
+            margin-top: 40px;
+            padding: 35px 16px 50px 16px;
+            background: linear-gradient(180deg, #160f0c 0%, #0d0907 100%);
+            border-top: 2px solid #3d2c24;
+        }
+
+        .footer-wrapper {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .footer-heading {
+            font-size: 16px;
+            font-weight: 700;
+            color: #d4a373;
+            margin-bottom: 14px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        .links-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .contact-btn, .location-btn, .insta-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            padding: 14px 16px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background: rgba(38, 27, 22, 0.9);
+            border: 1px solid #4a352b;
+            transition: all 0.2s;
+        }
+
+        .contact-btn {
+            background: linear-gradient(135deg, #1e3a2f 0%, #142820 100%);
+            border-color: #2e5a46;
+        }
+
+        .insta-btn {
+            background: linear-gradient(135deg, rgba(43, 31, 25, 0.9) 0%, rgba(60, 38, 33, 0.9) 100%);
+        }
+
+        .insta-icon, .contact-icon {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+        }
+
+        /* 4. MODAL OYNA */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(5px);
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .modal-content {
+            background-color: #261b16;
+            margin: 20px auto 40px auto;
+            border-radius: 16px;
+            max-width: 480px;
+            border: 1px solid #d4a373;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: rgba(28, 20, 16, 0.85);
+            color: #ffffff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            border: 1px solid #d4a373;
+            z-index: 10;
+        }
+
+        .modal-model-img {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            background-color: #33251e;
+            display: block;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #ffffff;
+        }
+
+        .modal-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #d4a373;
+            margin-bottom: 10px;
+        }
+
+        .modal-desc {
+            font-size: 14px;
+            color: #e6ccb2;
+            margin-bottom: 18px;
+        }
+
+        .telegram-btn { @Mediium_uz
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: linear-gradient(135deg, #24A1DE 0%, #1d85bc 100%);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 22px;
+        }
+
+        /* Otziv bo'limi */
+        .reviews-box {
+            border-top: 1px solid #3d2c24;
+            padding-top: 16px;
+        }
+
+        .reviews-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #e6ccb2;
+        }
+
+        .review-list {
+            max-height: 160px;
+            overflow-y: auto;
+            margin-bottom: 12px;
+        }
+
+        .review-item {
+            background-color: #160f0c;
+            padding: 10px 12px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            border: 1px solid #33251e;
+        }
+
+        .review-author {
+            font-weight: 700;
+            color: #d4a373;
+            font-size: 12px;
+            margin-bottom: 2px;
+        }
+
+        .review-form input, .review-form textarea {
+            width: 100%;
+            padding: 11px;
+            margin-bottom: 8px;
+            border-radius: 10px;
+            border: 1px solid #4a352b;
+            background-color: #160f0c;
+            color: #ffffff;
+            font-size: 13px;
+        }
+
+        .review-submit {
+            width: 100%;
+            padding: 11px;
+            background: linear-gradient(135deg, #d4a373 0%, #bc8a59 100%);
+            color: #160f0c;
+            font-weight: 700;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- YUQORI QISM -->
+    <header>
+        <button class="admin-login-icon" onclick="toggleAdmin()">⚙️ Admin</button>
+        <img src="logo.jpg" alt="MEDIUM Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/120/3d2c24/ffffff?text=MEDIUM'">
+        <div class="brand-name">MEDIUM</div>
+        <div class="welcome-text">MEDIUM erkaklar kiyim dokoniga hush kelibsiz</div>
+    </header>
+
+    <!-- KATALOG -->
+    <div class="container">
+        <div class="section-header">
+            <div class="section-title">Katalog — Barcha modellar</div>
+            <button id="addProductBtn" class="add-product-btn" onclick="openAddModal()">+ Mahsulot qo'shish</button>
+        </div>
+        <div class="products-grid" id="catalog"></div>
+    </div>
+
+    <!-- ENG PASTKI QISM: KONTAKTLAR, LOKATSIYALAR VA INSTAGRAM -->
+    <footer>
+        <div class="footer-wrapper">
+            
+            <!-- TELEFON RAQAMLAR / KONTAKTLAR -->
+            <div class="footer-heading">📞 Bog'lanish uchun raqamlar</div>
+            <div class="links-group">
+                <a href="tel:+998901234567" class="contact-btn">
+                    <span class="contact-icon">📞</span>
+                    <span>+998 (90) 123-45-67 (Asosiy raqam)</span>
+                </a>
+                <a href="tel:+998919876543" class="contact-btn">
+                    <span class="contact-icon">📞</span>
+                    <span>+998 (91) 987-65-43 (Filiallar uchun)</span>
+                </a>
+            </div>
+
+            <!-- LOKATSIYALAR -->
+            <div class="footer-heading">📍 Bizning filiallar (Lokatsiyalar)</div>
+            <div class="links-group">
+                <a href="https://maps.google.com/?q=Tashkent+Yashnobod" target="_blank" class="location-btn">
+                    <span>1. MEDIUM YASHNAOBOD</span>
+                </a>
+                <a href="https://maps.google.com/?q=Tashkent+Olmazor" target="_blank" class="location-btn">
+                    <span>2. MEDIUM OLMAZOR</span>
+                </a>
+                <a href="https://maps.google.com/?q=Samarkand" target="_blank" class="location-btn">
+                    <span>3. MEDIUM SAMARQAND</span>
+                </a>
+                <a href="https://maps.google.com/?q=Tashkent+Yunusobod" target="_blank" class="location-btn">
+                    <span>4. MEDIUM YUNUSAOBOD</span>
+                </a>
+            </div>
+
+            <!-- INSTAGRAM SAHIFALARI -->
+            <div class="footer-heading">Instagram sahifalarimiz</div>
+            <div class="links-group">
+                <a href="https://instagram.com/Medium_uz" target="_blank" class="insta-btn">
+                    <svg class="insta-icon" viewBox="0 0 24 24" fill="url(#instaGrad)">
+                        <defs>
+                            <linearGradient id="instaGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#f09433"/>
+                                <stop offset="25%" stop-color="#e6683c"/>
+                                <stop offset="50%" stop-color="#dc2743"/>
+                                <stop offset="75%" stop-color="#cc2366"/>
+                                <stop offset="100%" stop-color="#bc1888"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    <span>@Medium_uz</span>
+                </a>
+
+                <a href="https://instagram.com/medium_yunusobod" target="_blank" class="insta-btn">
+                    <svg class="insta-icon" viewBox="0 0 24 24" fill="url(#instaGrad)"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    <span>@medium_yunusobod</span>
+                </a>
+
+                <a href="https://instagram.com/medium_olmazor" target="_blank" class="insta-btn">
+                    <svg class="insta-icon" viewBox="0 0 24 24" fill="url(#instaGrad)"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    <span>@medium_olmazor</span>
+                </a>
+
+                <a href="https://instagram.com/medium_yashnabod" target="_blank" class="insta-btn">
+                    <svg class="insta-icon" viewBox="0 0 24 24" fill="url(#instaGrad)"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    <span>@medium_yashnabod</span>
+                </a>
+
+                <a href="https://instagram.com/mediumsamarqand" target="_blank" class="insta-btn">
+                    <svg class="insta-icon" viewBox="0 0 24 24" fill="url(#instaGrad)"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    <span>@mediumsamarqand</span>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- MODAL OYNA -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img id="modalImg" src="" alt="Model" class="modal-model-img">
+            
+            <div class="modal-body">
+                <div id="modalTitle" class="modal-title"></div>
+                <div id="modalPrice" class="modal-price"></div>
+                <div id="modalDesc" class="modal-desc"></div>
+
+                <a id="telegramLink" href="#" target="_blank" class="telegram-btn">
+                    ✈️ Telegram orqali buyurtma berish
+                </a>
+
+                <div class="reviews-box">
+                    <div class="reviews-title">Mijozlar fikri (Otzivlar)</div>
+                    <div id="reviewList" class="review-list"></div>
+                    
+                    <div class="review-form">
+                        <input type="text" id="reviewerName" placeholder="Ismingiz...">
+                        <textarea id="reviewerText" rows="2" placeholder="Fikringizni qoldiring..."></textarea>
+                        <button class="review-submit" onclick="addReview()">Otziv qoldirish</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAHSULOT QO'SHISH / TAHRIRLASH MODALI (ADMIN UCHUN) -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content" style="padding: 20px;">
+            <span class="close-btn" onclick="closeAdminModal()">&times;</span>
+            <h3 style="color:#d4a373; margin-bottom:15px;">Yangi mahsulot qo'shish</h3>
+            <div class="review-form">
+                <input type="text" id="newTitle" placeholder="Mahsulot nomi (masalan: Kurtka)">
+                <input type="text" id="newPrice" placeholder="Narxi (masalan: 350 000 so'm)">
+                <input type="text" id="newImg" placeholder="Katalog rasm nomi (masalan: rasm61.jpg)">
+                <input type="text" id="newModelImg" placeholder="Model rasm nomi (masalan: model61.jpg)">
+                <button class="review-submit" onclick="saveNewProduct()">Qo'shish</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const TELEGRAM_USERNAME = "medium_admin"; 
+
+        // Standart 60 ta mahsulot bazasi (yoki localStorage'dan olinadi)
+        let products = JSON.parse(localStorage.getItem("custom_products")) || [];
+        if (products.length === 0) {
+            for (let i = 1; i <= 60; i++) {
+                products.push({
+                    id: i,
+                    title: `MEDIUM Kolleksiya #${i}`,
+                    price: `${(250 + (i % 10) * 35)} 000 so'm`,
+                    img: `rasm${i}.jpg`,
+                    modelImg: `model${i}.jpg`,
+                    desc: "Yuqori sifatli mato, zamonaviy fason. Barcha o'lchamlar (S, M, L, XL, XXL) mavjud."
+                });
+            }
+        }
+
+        function renderCatalog() {
+            const catalogEl = document.getElementById("catalog");
+            catalogEl.innerHTML = "";
+            products.forEach((item, index) => {
+                const card = document.createElement("div");
+                card.className = "card";
+                card.onclick = () => openModal(index);
+
+                card.innerHTML = `
+                    <img src="${item.img}" alt="${item.title}" onerror="this.src='https://via.placeholder.com/300x380/2e211b/e6ccb2?text=Rasm+${item.id}'">
+                    <div class="card-info">
+                        <div class="product-title">${item.title}</div>
+                        <div class="product-price">${item.price}</div>
+                    </div>
+                `;
+                catalogEl.appendChild(card);
+            });
+        }
+        renderCatalog();
+
+        let currentProductId = null;
+        function openModal(index) {
+            const item = products[index];
+            currentProductId = item.id;
+
+            const modalImg = document.getElementById("modalImg");
+            modalImg.src = item.modelImg;
+            modalImg.onerror = function() {
+                this.src = item.img;
+            };
+
+            document.getElementById("modalTitle").innerText = item.title;
+            document.getElementById("modalPrice").innerText = item.price;
+            document.getElementById("modalDesc").innerText = item.desc;
+
+            const message = encodeURIComponent(`Assalomu alaykum! Men MEDIUM do'konidan "${item.title}" (${item.price}) buyurtma bermoqchi edim.`);
+            document.getElementById("telegramLink").href = `https://t.me/${TELEGRAM_USERNAME}?text=${message}`;
+
+            loadReviews(item.id);
+            document.getElementById("productModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("productModal").style.display = "none";
+        }
+
+        // ADMIN HUQUQI VA SOZLAMALARI
+        function toggleAdmin() {
+            let pass = prompt("Admin parolini kiriting:");
+            if (pass === "medium2026") { // Parolni xohlasangiz o'zgartirishingiz mumkin
+                document.getElementById("addProductBtn").style.display = "block";
+                alert("Admin huquqi berildi! Endi mahsulot qo'shishingiz mumkin.");
+            } else if (pass !== null) {
+                alert("Parol noto'g'ri!");
+            }
+        }
+
+        function openAddModal() {
+            document.getElementById("adminModal").style.display = "block";
+        }
+        function closeAdminModal() {
+            document.getElementById("adminModal").style.display = "none";
+        }
+
+        function saveNewProduct() {
+            let title = document.getElementById("newTitle").value;
+            let price = document.getElementById("newPrice").value;
+            let img = document.getElementById("newImg").value;
+            let modelImg = document.getElementById("newModelImg").value;
+
+            if(!title || !price) {
+                alert("Mahsulot nomi va narxini kiriting!");
+                return;
+            }
+
+            products.unshift({
+                id: products.length + 1,
+                title: title,
+                price: price,
+                img: img || "rasm1.jpg",
+                modelImg: modelImg || "model1.jpg",
+                desc: "Yuqori sifatli mato, zamonaviy fason. Barcha o'lchamlar mavjud."
+            });
+
+            localStorage.setItem("custom_products", JSON.stringify(products));
+            renderCatalog();
+            closeAdminModal();
+            alert("Yangi mahsulot muvaffaqiyatli qo'shildi!");
+        }
+
+        function loadReviews(productId) {
+            const listEl = document.getElementById("reviewList");
+            const saved = JSON.parse(localStorage.getItem("reviews_" + productId)) || [
+                { name: "Jasur", text: "Sifati zo'r ekan, razmeri to'g'ri keldi!" }
+            ];
+
+            listEl.innerHTML = "";
+            saved.forEach(rev => {
+                const div = document.createElement("div");
+                div.className = "review-item";
+                div.innerHTML = `<div class="review-author">${rev.name}</div><div>${rev.text}</div>`;
+                listEl.appendChild(div);
+            });
+        }
+
+        function addReview() {
+            const nameInput = document.getElementById("reviewerName");
+            const textInput = document.getElementById("reviewerText");
+
+            if (!nameInput.value.trim() || !textInput.value.trim()) {
+                alert("Iltimos, ismingiz va fikringizni yozing!");
+                return;
+            }
+
+            const saved = JSON.parse(localStorage.getItem("reviews_" + currentProductId)) || [
+                { name: "Jasur", text: "Sifati zo'r ekan, razmeri to'g'ri keldi!" }
+            ];
+
+            saved.push({ name: nameInput.value.trim(), text: textInput.value.trim() });
+            localStorage.setItem("reviews_" + currentProductId, JSON.stringify(saved));
+
+            nameInput.value = "";
+            textInput.value = "";
+            loadReviews(currentProductId);
+        }
+
+        window.onclick = function(event) {
+            if (event.target === document.getElementById("productModal")) closeModal();
+            if (event.target === document.getElementById("adminModal")) closeAdminModal();
+        }
+    </script>
+</body>
+</html>
